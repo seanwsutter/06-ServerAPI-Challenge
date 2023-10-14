@@ -1,5 +1,6 @@
 # 06 Server-Side APIs: Weather Dashboard Challenge
 
+
 ## Overview
 
 
@@ -19,27 +20,27 @@ Searched city will present current & future weather conditions
 
 current weather presents:
 
-    date, city name, icon for weather conditions, temperature, and humidity. 
+date, city name, icon for weather conditions, temperature, and humidity. 
 
 future weather presents:
     
-    date, icon for weather conditions, temperature, humidity, and wind speed.
+date, icon for weather conditions, temperature, humidity, and wind speed.
 
 Selecting city from history will present current and future weather conditions 
 ```
 
+
 ## Example Preview
 
-![The weather app includes a search option, a list of cities, and a five-day forecast and current weather conditions for Atlanta.](./assets/images/06-server-side-apis-homework-demo.png)
+![WIP](./assets/images/)
+
 
 
 ## Deployment
 
-GitHub links:
+* GitHub [Pages URL](https://seanwsutter.github.io/06-ServerAPI-Challenge/)
 
-* [Pages URL](https://seanwsutter.github.io/06-ServerAPI-Challenge/)
-
-* [Repository](https://github.com/seanwsutter/06-ServerAPI-Challenge)
+* Github [Repository](https://github.com/seanwsutter/06-ServerAPI-Challenge)
 
 
 
