@@ -2,32 +2,45 @@
 
 ## Overview
 
-* Weather dashboard that will run in the browser and feature dynamically updated HTML and CSS.
 
- * Uses the OpenWeather API to retrieve weather data.
+* The weather dashboard will dynamically update HTML and CSS upon searching for city. 
 
-    * Uses `localStorage` to store persistent data.
+* Using a [Five Day Forecast API](https:/openweathermap.org/forecast5) to retrieve weather data from [OpenWeatherMap](https://openweathermap.org/) 
+
+    * [Direct Geocoding API](https://openweathermap.org/api/geocoding-api#direct) to get coordinates (lat, long) when searching for city name.
+
+* Uses `localStorage` methods to store and retrieve data.
 
 
 ## Specific Goals
 
 ```
+Searched city will present current & future weather conditions
 
-Searching for city will show current and future weather conditions and adds city to search history
+current weather presents:
 
-Viewing current weather conditions for that city will show the city name, the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity, 
+    date, city name, icon for weather conditions, temperature, and humidity. 
 
-Viewing future weather conditions for that city will present a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, the wind speed, and the humidity
+future weather presents:
+    
+    date, icon for weather conditions, temperature, humidity, and wind speed.
 
-Clicking on city in the search history will display current and future conditions for that city
-
+Selecting city from history will present current and future weather conditions 
 ```
 
-## Preview
+## Example Preview
 
-![Preview](./Assets/06-server-side-apis-homework-demo.png)
+![The weather app includes a search option, a list of cities, and a five-day forecast and current weather conditions for Atlanta.](./assets/images/06-server-side-apis-homework-demo.png)
 
-## Links
 
-[GitHub Repository](https://github.com/seanwsutter/06-ServerAPI-Challenge)
+## Deployment
+
+GitHub links:
+
+* [Pages URL](https://seanwsutter.github.io/06-ServerAPI-Challenge/)
+
+* [Repository](https://github.com/seanwsutter/06-ServerAPI-Challenge)
+
+
+
 
