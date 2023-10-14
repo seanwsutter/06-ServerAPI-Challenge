@@ -32,7 +32,7 @@ Selecting city from history will present current and future weather conditions
 
 ## Example Preview
 
-![WIP](./assets/images/)
+![WIP](./assets/images/06-server-side-apis-homework-demo.png)
 
 
 
