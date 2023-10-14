@@ -32,15 +32,15 @@ Selecting city from history will present current and future weather conditions
 
 ## Example Preview
 
-![WIP](./assets/images/06-server-side-apis-homework-demo.png)
+![WIP](./assets/images/7pIxbgV.png)
 
 
 
 ## Deployment
 
-* GitHub [Pages URL](https://seanwsutter.github.io/06-ServerAPI-Challenge/)
+* GitHub [Pages URL](https://seanwsutter.github.io/06-serverapi-challenge-sws/)
 
-* Github [Repository](https://github.com/seanwsutter/06-ServerAPI-Challenge)
+* Github [Repository](https://github.com/seanwsutter/06-serverapi-challenge-sws/)
 
 
 

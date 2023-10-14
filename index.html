@@ -4,16 +4,66 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Server Side APIs: Challenge 06</title>
-  <link rel="stylesheet" href="./assets/cs/style.css">
-
+  <title>Challenge 06: Weather Forecast API</title>
+  <!-- bootstrap, font-awesome, google fonts, mdb, local -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body>
-  fill
+  <!-- header -->
+  <header class="d-flex justify-content-center bg-dark p-3 text-center text-white">
+    <h1 class="p-3 text-light fw-bold text-center h1">weather forecast api</h1>
+  </header>
+
+  <!-- search container -->
+  <section class="d-flex justify-content-center">
+
+    <div class="p-3 col-xxl-3 dfcol-md-0 px-lg-4">
+      <h5 class="fw-bold text-center">search for city</h5>
+      <input type=" search" class="form-control mt-3  ds-input" id="search-city-id" placeholder="enter city name..">
+      <button type="submit" class="btn w-100 mt-3 mb-2 bg-dark text-white" id="search-btn">get weather</button>
+    </div>
+
+    <div>
+      <!-- search history -->
+    </div>
+
+  </section>
+
+  <!-- current & forecast weather -->
+  <section class="d-flex row justify-content-center">
+    <!-- current weather -->
+    <div class="card justify-center mt-3 mb-3 p-3 col-md-9" id="current-city-info">
+      <h7 class="card-title" id="date">date</h7>
+      <h3 class="card-title" id="current-city-name">city name</h2>
+
+        <div class="column" id="current-city-conditions">
+          <h6 class="card-text" id="current-city-temp">temperature :</h6>
+          <h6 class="card-text" id="current-city-humid">humidity :</h6>
+        </div>
+    </div>
+
+    <!-- forecast weather -->
+    <div>
+      <h3 class="card-title mt-3">5 day forecast</h3>
+
+      <div class="d-flex justify-content-center" id="five-day-forecast">
+      </div>
+    </div>
+
+  </section>
 
 
-
+  <!-- MDB, bootstrap, local -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
   <script src="./assets/js/script.js"></script>
 </body>
 
@@ -21,27 +71,23 @@
 
 
 
+<!-- commemnts
 
-<!-- <h2>JavaScript Geolocation API</h2>
-  <p>Click the button to get your coordinates.</p>
+  <button id="submit">Submit</button>
 
-  <button onclick="getLocation()">My Location</button>
 
-  <p id="demo"></p>
+<nav class="navbar bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand">Navbar</a>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </nav> 
 
-  <script>
-    const x = document.getElementById("demo");
+  
 
-    function getLocation() {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(showPosition);
-      } else {
-        x.innerHTML = "Geolocation is not supported by this browser.";
-      }
-    }
+  
 
-    function showPosition(position) {
-      x.innerHTML = "Latitude: " + position.coords.latitude +
-        "<br>Longitude: " + position.coords.longitude;
-    }
-  </script> -->
+comments -->
