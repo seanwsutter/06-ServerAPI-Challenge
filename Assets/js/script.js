@@ -1,29 +1,36 @@
-// get my location (lat, long)
-// let myLocation = document.getElementById("demo");
+// open weather api call
+let getWeatherData = function (city) {
+   let apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=ce39e7239416ad754359ca762d28521a&units=imperial";
 
-// function getLocation() {
-//    if (navigator.geolocation) {
-//       navigator.geolocation.getCurrentPosition(showPosition);
-//    } else {
-//       myLocation.innerHTML = "Geolocation is not supported by this browser.";
-//    }
+   // make a request to the url
+   fetch(apiUrl)
+
+      .then(function (response) {
+         console.log(k);
+         // request was successful
+         if (response.ok) {
+            response.json().then(function (data) {
+               displayWeather(data);
+            });
+            // request fails
+         } else {
+            alert("Error: " + response.statusText);
+         }
+      })
+
+      // alert user if there is no responce from OpenWeather
+      .catch(function (error) {
+         alert("Unable to connect to OpenWeather");
+      })
+};
+
+// function getWeatherData(city) {
+//    let apiURL =
 // }
 
-// function showPosition(position) {
-//    x.innerHTML = "Latitude: " + position.coords.latitude +
-//       "<br>Longitude: " + position.coords.longitude;
-// }
-const APIKey = "762a9cd39fe01efc58fd07631e2f3dfa";
-console.log(APIKey);
+// let apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=ce39e7239416ad754359ca762d28521a&units=imperial";
 
-
-https://api.openweathermap.org / data / 2.5 / forecast ? q = { city } & appid={ APIKey }
-console.log("calling 5 day forecast API...");
-
-
-
-// api.openweathermap.org / data / 2.5 / forecast ? lat = { lat } & lon={ lon }& appid={ APIKey }
-// http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={API key}
+// http://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid={API key}
 
 
 
@@ -34,50 +41,26 @@ console.log("calling 5 day forecast API...");
 
 
 
-/*
-  - Everyone in the group shares the same codebase 
-  - The main branch is untouchable 
-  - For every specific work you are doing, you create a branch 
-     git checkout -b html-start
 
-  - If you accidentally start putting new code in your main branch:
-      git switch name-of-new-branch
 
-  - Do git add and git commit as often as you want in that branch 
-  
-  - When the branch is ready:
-      git push origin html-start
 
-  - This creates a pull request, which you will see on the Github repo itself
-  - The maintainer of the repo then approves the pull request
-  - This merges the new branch with main
 
-  WHENEVER THE MAIN BRANCH IS UPDATED, EACH TEAM MEMBER:
 
-  1. git add/commit on any branch you're working on
-  2. git checkout main 
-  3. git pull origin main ( now your main branch is up to date)
-  4. go back to whatever branch you were working on:
-       git checkout existing-branch
-  5. git merge main
 
-     When you do a merge, the terminal's text editor may ask you to provide a comment. Just type 
-     the following:
 
-     :wq!
 
-     and then hit return.
 
-  IF GIT TELLS YOU THAT YOU HAVE A MERGE CONFLICT:
+// const APIKey = "762a9cd39fe01efc58fd07631e2f3dfa";
+// console.log(APIKey);
 
-  1. You'll have these options:
+// const URL = "https://api.openweathermap.org/data/2.5/forecast/daily?"
+// "q=CITY&cnt=7&units=imperial&APPID=YOUR_APP_ID";
+// https: api.openweathermap.org / data / 2.5 / forecast ? q = { city } & appid={ "762a9cd39fe01efc58fd07631e2f3dfa" }
 
-     a. Keep the existing code 
-     b. Keep the incoming code 
-     c. Keep both sets of code 
-     d. Keep none 
+// api.openweathermap.org / data / 2.5 / forecast ? lat = { lat } & lon={ lon }& appid={"762a9cd39fe01efc58fd07631e2f3dfa"}
 
-  2. Choose an option
-  3. Do a git add/commit (fixed merge conflict)
+// http://api.openweathermap.org/geo/1.0/direct?q={city name},{state code},{country code}&limit={limit}&appid={"762a9cd39fe01efc58fd07631e2f3dfa"}
 
-*/
+// https://api.openweathermap.org/data/2.5/forecast?q=New%20York&appid=<your-api-key>&cnt=5
+
+
