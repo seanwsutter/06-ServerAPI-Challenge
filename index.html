@@ -16,48 +16,62 @@
 
 <body>
   <!-- header -->
-  <header class="d-flex justify-content-center bg-dark p-3 text-center text-white">
-    <h1 class="p-3 text-light fw-bold text-center h1">weather forecast api</h1>
+  <header class="container-fluid my-auto p-4 justify-content-center bg-dark  shadow-lg text-white">
+    <h1 class="h1 text-bold fw-bold text-center">weather forecast api</h1>
   </header>
 
-  <!-- search container -->
-  <section class="d-flex justify-content-center">
+  <main class="d-flex justify-content-between mb-3 p-3"> <!-- search container -->
 
-    <div class="p-3 col-xxl-3 dfcol-md-0 px-lg-4">
-      <h5 class="fw-bold text-center">search for city</h5>
-      <input type=" search" class="form-control mt-3  ds-input" id="search-city-id" placeholder="enter city name..">
-      <button type="submit" class="btn w-100 mt-3 mb-2 bg-dark text-white" id="search-btn">get weather</button>
-    </div>
+    <section class="d-flex flex-lg-row w-25 mt-3 mb-3 g-3 p-3 p-y shadow-lg border-dark">
+      <form class="container-fluid  p-3 bg-light col-xxl-">
+        <!-- <label for="formGroupExampleInput">search for city</label> -->
 
-    <div>
-      <!-- search history -->
-    </div>
 
-  </section>
+        <h5 class="h5 fw-bold text-center">search by city name</h5>
 
-  <!-- current & forecast weather -->
-  <section class="d-flex row justify-content-center">
-    <!-- current weather -->
-    <div class="card justify-center mt-3 mb-3 p-3 col-md-9" id="current-city-info">
-      <h7 class="card-title" id="date">date</h7>
-      <h3 class="card-title" id="current-city-name">city name</h2>
+        <input type="text" class="searchCityInput form-control shadow-lg" id="search-city-input"
+          placeholder="enter city name...">
+        <button type="submit" class="btn shadow-lg w-100 mt-3 mb-2 btn-dark text-white text-lowercase" id="search-btn"
+          onclick="getWeather(), getSearchInput();">search
+        </button>
 
-        <div class="column" id="current-city-conditions">
-          <h6 class="card-text" id="current-city-temp">temperature :</h6>
-          <h6 class="card-text" id="current-city-humid">humidity :</h6>
-        </div>
-    </div>
+      </form>
 
-    <!-- forecast weather -->
-    <div>
-      <h3 class="card-title mt-3">5 day forecast</h3>
+      <!-- <div id="search-history-container" class="row m-0 search-history-container">history
+          
+        </div> -->
+    </section>
 
-      <div class="d-flex justify-content-center" id="five-day-forecast">
+    <!-- current & forecast weather -->
+    <section class="d-flex w-75 mt-3 mb-3 p-3 g-3 bg-light shadow-lg">
+      <!-- current weather -->
+      <div class="card-header  row g-3 p-3" id="current-city-conditions">current weather
+        <h7 class="h7" id="date">date</h7>
+        <h3 class="h3" id="city-name">city name</h3>
+        <h6 class="h6" id="current-city-temp">temperature :</h6>
+        <h6 class="h6" id="current-city-humid">humidity :</h6>
+      </div>
+    </section>
+
+
+  </main>
+  <!-- forecast weather -->
+  <div class="card border-dark" style="width: 100%">
+    <div class="card-header">5-Day Forecast</div>
+    <div class="card-body card5day-body text-dark">
+      <div class="row justify-content-center" id="forcast-5day-container">
+        <!-- card for 5-day forcast  -->
       </div>
     </div>
+  </div>
+  <!-- <section class="m-3 p-3 g-3 bg-light p-lg-1 shadow-lg d-flex justify-content-center">
+    <h3 class="card-title mt-3">5 day forecast</h3>
 
-  </section>
+    <div class="d-flex justify-content-center" id="five-day-forecast">
+    </div>
 
+
+  </section> -->
 
   <!-- MDB, bootstrap, local -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>

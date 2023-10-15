@@ -1,36 +1,51 @@
-// open weather api call
-let getWeatherData = function (city) {
-   let apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=ce39e7239416ad754359ca762d28521a&units=imperial";
+// note APIKey = "762a9cd39fe01efc58fd07631e2f3dfa"
 
-   // make a request to the url
-   fetch(apiUrl)
 
-      .then(function (response) {
-         console.log(k);
-         // request was successful
-         if (response.ok) {
-            response.json().then(function (data) {
-               displayWeather(data);
-            });
-            // request fails
-         } else {
-            alert("Error: " + response.statusText);
-         }
-      })
 
-      // alert user if there is no responce from OpenWeather
-      .catch(function (error) {
-         alert("Unable to connect to OpenWeather");
-      })
-};
 
-// function getWeatherData(city) {
-//    let apiURL =
-// }
+// get weather data
+function getWeather() {
+   var url = "https://api.openweathermap.org/data/2.5/forecast?q=London&appid=762a9cd39fe01efc58fd07631e2f3dfa"
+
+   fetch(url)
+      .then((response) => response.json())
+      .then((data) => console.log(data));
+   console.log("in functuon getWeather..");
+
+}
+// getWeather();
+
+
+// get text input from search input
+function getSearchInput() {
+   let searchCityInputEl = document.getElementById("search-city-input");
+   let cityName = document.getElementById("city-name")
+   cityName.innerHTML += searchCityInputEl.value
+   // console.log("in getSearchInput.. city name: " + cityName);
+}
+// delay
+fetch("https://api.openweathermap.org/data/2.5/forecast?q=" + searchCityInputEl.value + "&appid=762a9cd39fe01efc58fd07631e2f3dfa")
+
+   .then(response => response.json())
+   .then(data => {
+      for (i = 0; i < 5; i++) {
+         document.getElementById("day" + (i + 1) + "temp").innerHTML = "temp:" + Number(data.list[i].main.temp - 278.65).toFixed(1) + "°";
+      }
+   })
+
+
+
+
+
+// var url = "https://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid=762a9cd39fe01efc58fd07631e2f3dfa"
+// var url = "https://api.openweathermap.org / data / 2.5 / forecast ? q = London & appid=762a9cd39fe01efc58fd07631e2f3dfa}"
+
+// api.openweathermap.org / data / 2.5 / forecast ? q = { city name } & appid={API key }
+// "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=5&appid=762a9cd39fe01efc58fd07631e2f3dfa"
+// display weather data
 
 // let apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=ce39e7239416ad754359ca762d28521a&units=imperial";
 
-// http://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid={API key}
 
 
 
@@ -50,7 +65,6 @@ let getWeatherData = function (city) {
 
 
 
-// const APIKey = "762a9cd39fe01efc58fd07631e2f3dfa";
 // console.log(APIKey);
 
 // const URL = "https://api.openweathermap.org/data/2.5/forecast/daily?"
