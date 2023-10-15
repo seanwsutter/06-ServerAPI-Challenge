@@ -1,6 +1,7 @@
 // note APIKey = "762a9cd39fe01efc58fd07631e2f3dfa"
 
-
+// let searchCityInputEl = document.getElementById("search-city-input");
+// let cityName = document.getElementById("city-name")
 
 
 // get weather data
@@ -20,18 +21,17 @@ function getWeather() {
 function getSearchInput() {
    let searchCityInputEl = document.getElementById("search-city-input");
    let cityName = document.getElementById("city-name")
-   cityName.innerHTML += searchCityInputEl.value
-   // console.log("in getSearchInput.. city name: " + cityName);
+   cityName.innerHTML = searchCityInputEl.value
+   // console.log(cityName);
 }
-// delay
-fetch("https://api.openweathermap.org/data/2.5/forecast?q=" + searchCityInputEl.value + "&appid=762a9cd39fe01efc58fd07631e2f3dfa")
+// fetch("https://api.openweathermap.org/data/2.5/forecast?q=" + searchCityInputEl.value + "&appid=762a9cd39fe01efc58fd07631e2f3dfa")
 
-   .then(response => response.json())
-   .then(data => {
-      for (i = 0; i < 5; i++) {
-         document.getElementById("day" + (i + 1) + "temp").innerHTML = "temp:" + Number(data.list[i].main.temp - 278.65).toFixed(1) + "°";
-      }
-   })
+//    .then(response => response.json())
+//    .then(data => {
+//       for (i = 0; i < 5; i++) {
+//          document.getElementById("day" + (i + 1) + "temp").innerHTML = "temp:" + Number(data.list[i].main.temp - 278.65).toFixed(1) + "°";
+//       }
+//    })
 
 
 

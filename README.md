@@ -8,20 +8,27 @@
 
 * Using a [Five Day Forecast API](https:/openweathermap.org/forecast5) to retrieve weather data from [OpenWeatherMap](https://openweathermap.org/) 
 
-* Uses `localStorage` methods to store and retrieve data.
+* Uses `localStorage` and `JSON` methods to store and retrieve data.
 
 
 
 ## Specific Goals
 
 ```
-Searched city will present current & future weather conditions
 
-current weather conditions: date, city name, icon for weather conditions, temperature, and humidity. 
+Searched city will present current & future weather conditions aswell as save search history
 
-future weather conditions: date, icon for weather conditions, temperature, humidity, and wind speed.
+OpenWeatherMap API to get following weather data:
+  
+  city name 
+  date 
+  icon representation of weather conditions 
+  temperature
+  humidity
+  wind speed
 
 Selecting city from history will present current and future weather conditions 
+
 ```
 
 

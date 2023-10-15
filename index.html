@@ -16,62 +16,45 @@
 
 <body>
   <!-- header -->
-  <header class="container-fluid my-auto p-4 justify-content-center bg-dark  shadow-lg text-white">
+  <header class="d-flex p-4 justify-content-center bg-dark shadow-lg text-white">
     <h1 class="h1 text-bold fw-bold text-center">weather forecast api</h1>
   </header>
 
-  <main class="d-flex justify-content-between mb-3 p-3"> <!-- search container -->
+  <!-- main container -->
+  <main class="d-flex  justify-content-between- mb-3 p-3">
 
-    <section class="d-flex flex-lg-row w-25 mt-3 mb-3 g-3 p-3 p-y shadow-lg border-dark">
+    <!-- search city container -->
+    <section class="d-flex flex-row w-25 mt-3 mb-3 g-3 p-3 p-y shadow-lg border border-dark-subtle">
       <form class="container-fluid  p-3 bg-light col-xxl-">
-        <!-- <label for="formGroupExampleInput">search for city</label> -->
-
-
         <h5 class="h5 fw-bold text-center">search by city name</h5>
-
         <input type="text" class="searchCityInput form-control shadow-lg" id="search-city-input"
           placeholder="enter city name...">
         <button type="submit" class="btn shadow-lg w-100 mt-3 mb-2 btn-dark text-white text-lowercase" id="search-btn"
           onclick="getWeather(), getSearchInput();">search
         </button>
-
       </form>
-
-      <!-- <div id="search-history-container" class="row m-0 search-history-container">history
-          
-        </div> -->
     </section>
 
-    <!-- current & forecast weather -->
-    <section class="d-flex w-75 mt-3 mb-3 p-3 g-3 bg-light shadow-lg">
-      <!-- current weather -->
-      <div class="card-header  row g-3 p-3" id="current-city-conditions">current weather
-        <h7 class="h7" id="date">date</h7>
-        <h3 class="h3" id="city-name">city name</h3>
-        <h6 class="h6" id="current-city-temp">temperature :</h6>
-        <h6 class="h6" id="current-city-humid">humidity :</h6>
+    <!-- current weather -->
+    <section class="d-flex w-75 mt-3 mb-3 p-3 g-3 bg-light shadow-lg border border-dark-subtle rounded">
+      <div class="flex-row " id="current-weather">
+        <h3 class="cityName mb-1 mt-2 bolder" id="city-name">city name</h3>
+        <p class="tempClass" id="current-temp"></p>temperature:</p>
+        <p class="humidityClass" id="current-humidity">humidity:</p>
+        <p class="windClass" id="current-wind-speed">wind speed:</p>
+        <p class="uvClass" id="current-uv-index">u/v index:</p>
       </div>
     </section>
-
 
   </main>
+
   <!-- forecast weather -->
-  <div class="card border-dark" style="width: 100%">
-    <div class="card-header">5-Day Forecast</div>
-    <div class="card-body card5day-body text-dark">
-      <div class="row justify-content-center" id="forcast-5day-container">
-        <!-- card for 5-day forcast  -->
-      </div>
-    </div>
-  </div>
-  <!-- <section class="m-3 p-3 g-3 bg-light p-lg-1 shadow-lg d-flex justify-content-center">
-    <h3 class="card-title mt-3">5 day forecast</h3>
-
-    <div class="d-flex justify-content-center" id="five-day-forecast">
-    </div>
+  <section class="d-flex m-3 p-3 g-3 justify-content-center border border-dark-subltle bg-light shadow-lg">
+    <h3 class="h3">weather forecast</h3>
+    <div class="forecast"></div>
+  </section>
 
 
-  </section> -->
 
   <!-- MDB, bootstrap, local -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
