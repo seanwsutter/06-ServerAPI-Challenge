@@ -30,7 +30,7 @@
         <input type="text" class="searchCityInput form-control shadow-lg" id="search-city-input"
           placeholder="enter city name...">
         <button type="submit" class="btn shadow-lg w-100 mt-3 mb-2 btn-dark text-white text-lowercase" id="search-btn"
-          onclick="getWeather(), getSearchInput();">search
+          onclick="getCurrentWeather(), getSearchInput()">search
         </button>
       </form>
     </section>
@@ -39,10 +39,11 @@
     <section class="d-flex w-75 mt-3 mb-3 p-3 g-3 bg-light shadow-lg border border-dark-subtle rounded">
       <div class="flex-row " id="current-weather">
         <h3 class="cityName mb-1 mt-2 bolder" id="city-name">city name</h3>
-        <p class="tempClass" id="current-temp"></p>temperature:</p>
-        <p class="humidityClass" id="current-humidity">humidity:</p>
-        <p class="windClass" id="current-wind-speed">wind speed:</p>
-        <p class="uvClass" id="current-uv-index">u/v index:</p>
+        <p class="dateClass" id="current-date">date: </p>
+        <p class="tempClass" id="current-temp">temperature: </p>
+        <p class="humidityClass" id="current-humidity">humidity: </p>
+        <p class="windClass" id="current-wind-speed">wind speed: </p>
+        <p class="uvClass" id="current-uv-index">u/v index: </p>
       </div>
     </section>
 
