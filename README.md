@@ -34,7 +34,7 @@ Selecting city from history will present current and future weather conditions
 
 ## Example Preview
 
-![WIP](./assets/images/7pIxbgV.png)
+![WIP](./Assets/images/7pIxbgV.png)
 
 
 
