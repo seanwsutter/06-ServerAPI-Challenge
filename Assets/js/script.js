@@ -7,7 +7,7 @@ var searchCity = document.getElementById("search-city-input");
 
 
 
-// city search then get weather api
+// click search city > get coords api > get city weather
 function searchBtnEvent(event) {
    event.preventDefault();
    var searchCityVal = searchCity.value; 
@@ -18,57 +18,57 @@ function searchBtnEvent(event) {
   } {
     console.log("searched city", searchCityVal);
    }
-   getWeatherApi(searchCityVal);
+   getCoordinatesApi(searchCityVal);
 };
 
-// // weather API
-// function getCoordinatesApi (searchCityVal) {
-// //  var geoURL = "https://api.openweathermap.org/geo/1.0/direct?q=" + searchCityVal + "&limit=1&appid=" + apiKEY
-//   var apiURL = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + apiKEY + "&units=imperial"
-  
-//   fetch(geoURL)
-//   .then(response => response.json())
-//   .then(data => {
-//     let lat = data[0].lat.toFixed(2);
-//     let lon = data[0].lon.toFixed(2);
-//     getWeatherApi(lat, lon);
-//   })
-//   .catch(function (error) {
-//     console.log("failed", error);
-//   });
-// };
+// get coords for weather
+function getCoordinatesApi(searchCityVal) {
+  //  var geoURL = "https://api.openweathermap.org/geo/1.0/direct?q=" + searchCityVal + "&limit=1&appid=" + apiKEY
+  var geoURL = "https://api.openweathermap.org/geo/1.0/direct?q="
+  + searchCityVal + "&limit=1&appid=" + apiKEY;
+  fetch(geoURL)
+  .then(response => response.json())
+  .then(data => {
+    lat = data[0].lat;
+    lon = data[0].lon;
+    console.log(data);
+    getWeatherApi(lat, lon)
+  })
+  .catch(function (error) {
+    console.log("failed", error);
+  });
+};
+
 
 // get weather api
-function getWeatherApi(searchCity) {
+function getWeatherApi(lat, lon) {
   // var apiURL = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + apiKEY + "&units=imperial"
-  var apiURL = "https://api.openweathermap.org/geo/1.0/direct?q="+searchCity+"&limit=1&appid=" + apiKEY
+  var weatherURL = "https://api.openweathermap.org/data/2.5/forecast?lat="
+  + lat + "&lon=" + lon + "&appid=" + apiKEY;
 
 
-   fetch(apiURL)
+   fetch(weatherURL)
       .then(response => response.json())
       .then(data => {
         console.log("data from weather api:", data);
-        displayWeather(data)
+        displayWeather(data) 
+    
       })
-      .catch(function (error) {
-         
-         console.log("failed to get weather api", error)
-      });
+      
 };
 
 
 // display weather function
 
 function displayWeather(data) {
-  let cityName = data[0].name;
-  document.getElementById("city-name").innerHTML = cityName;
+  let cityName = data[0].city[3];
+  cityName = document.getElementById("city-name").innerHTML 
   // ddocument.querySelector(".city-name").innerText = name;
   let icon = data
   document.querySelector(".current-icon").src = "https://openweathermap.org/img/wn/" + icon + ".png";
   document.querySelector(".temp").innerHTML = temp;
   document.querySelector(".humidity").innerHTML = humidty + "%";
   document.querySelector(".wind").innerText = speed + "km/h";
-
 
   // for (var i = -1; i <= data.list.length; i += 8) {
   //   console.log(i);
@@ -83,6 +83,34 @@ function displayWeather(data) {
   //   let windSpeed = data.list[index].wind.speed;
 
   };
+
+
+// <!-- current weather -- >
+//   <card class="text-end w-75 p-3 m-3 bg-light shadow-lg border border-dark-subtle rounded">
+//     <h3 class="cityName mb-2 p-2 mt-2 bolder" id="city-name">city name</h3>
+
+//     <div class="container-fluid" id="current-weather">
+//       <img src="https://openweathermap.org/img/wn/04n.png" alt="" class="currentIcon" id="currentIcon" />
+//       <p class="dateClass" id="current-date">date</p>
+//       <p class="tempClass" id="current-temp">temperature</p>
+//       <p class="humidityClass" id="current-humidity">humidity</p>
+//       <p class="windClass" id="current-wind-speed">wind speed</p>
+//       <p class="uvClass" id="current-uv-index">u/v index</p>
+//     </div>
+//   </card>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
