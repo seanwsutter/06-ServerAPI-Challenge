@@ -18,7 +18,8 @@ function searchBtnEvent(event) {
   } {
     console.log("searched city", searchCityVal);
    }
-   getCoordinatesApi(searchCityVal);
+  getCoordinatesApi(searchCityVal);
+  
 };
 
 // get coords for weather
@@ -31,7 +32,7 @@ function getCoordinatesApi(searchCityVal) {
   .then(data => {
     lat = data[0].lat;
     lon = data[0].lon;
-    console.log(data);
+    console.log("get cords from data", data);
     getWeatherApi(lat, lon)
   })
   .catch(function (error) {
@@ -43,7 +44,7 @@ function getCoordinatesApi(searchCityVal) {
 // get weather api
 function getWeatherApi(lat, lon) {
   // var apiURL = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + apiKEY + "&units=imperial"
-  var weatherURL = "https://api.openweathermap.org/data/2.5/forecast?lat="
+  var weatherURL = "https://api.openweathermap.org/data/2.5/weather?lat="
   + lat + "&lon=" + lon + "&appid=" + apiKEY;
 
 
@@ -61,15 +62,23 @@ function getWeatherApi(lat, lon) {
 // display weather function
 
 function displayWeather(data) {
-  let cityName = data[0].city[3];
-  cityName = document.getElementById("city-name").innerHTML 
+  var cityName = document.getElementById("city-name")
+  cityName.innerHTML = data.name;
+  
+  var currentIcon = document.getElementById("current-icon")
+  currentIcon.src = "https://openweathermap.org/img/wn/" + data.weather[0].icon + ".png";
+  // currentIcon.classList.remove("hide")
+  
+  var currentTemp = document.getElementById("current-temp")
+  currentTemp.innerHTML = data.main.temp + " degrees"
+  
+  var currentHumidity = document.getElementById("current-humidity")
+  currentHumidity.innerHTML = data.main.humidity + " % humidity";
+  
+  var currentWind = document.getElementById("current-wind-speed")
+  currentWind.innerHTML = data.wind.speed + " km/h winds";
+  
   // ddocument.querySelector(".city-name").innerText = name;
-  let icon = data
-  document.querySelector(".current-icon").src = "https://openweathermap.org/img/wn/" + icon + ".png";
-  document.querySelector(".temp").innerHTML = temp;
-  document.querySelector(".humidity").innerHTML = humidty + "%";
-  document.querySelector(".wind").innerText = speed + "km/h";
-
   // for (var i = -1; i <= data.list.length; i += 8) {
   //   console.log(i);
   //   let index;
