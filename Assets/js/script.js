@@ -1,10 +1,12 @@
 const apiKEY = "762a9cd39fe01efc58fd07631e2f3dfa"
+// var currentDate = dayjs().format('MM/DD/YYYY')
+// var now = dayjs()
+
 
 // search button
 var searchBtn = document.getElementById("search-btn");
 searchBtn.addEventListener("click", searchBtnEvent);
 var searchCity = document.getElementById("search-city-input");
-
 
 
 // click search city > get coords api > get city weather
@@ -26,7 +28,7 @@ function searchBtnEvent(event) {
 function getCoordinatesApi(searchCityVal) {
   //  var geoURL = "https://api.openweathermap.org/geo/1.0/direct?q=" + searchCityVal + "&limit=1&appid=" + apiKEY
   var geoURL = "https://api.openweathermap.org/geo/1.0/direct?q="
-  + searchCityVal + "&limit=1&appid=" + apiKEY;
+    + searchCityVal + "&limit=1&appid=" + apiKEY + "&units=imperial";
   fetch(geoURL)
   .then(response => response.json())
   .then(data => {
@@ -34,100 +36,102 @@ function getCoordinatesApi(searchCityVal) {
     lon = data[0].lon;
     console.log("get cords from data", data);
     getWeatherApi(lat, lon)
+    forecastWeather(lat, lon)
   })
   .catch(function (error) {
     console.log("failed", error);
   });
 };
 
-
 // get weather api
 function getWeatherApi(lat, lon) {
   // var apiURL = "https://api.openweathermap.org/data/2.5/forecast?lat=" + lat + "&lon=" + lon + "&appid=" + apiKEY + "&units=imperial"
   var weatherURL = "https://api.openweathermap.org/data/2.5/weather?lat="
-  + lat + "&lon=" + lon + "&appid=" + apiKEY;
-
+    + lat + "&lon=" + lon + "&appid=" + apiKEY + "&units=imperial";
 
    fetch(weatherURL)
       .then(response => response.json())
       .then(data => {
         console.log("data from weather api:", data);
         displayWeather(data) 
-    
-      })
-      
+    })
 };
+  
+function forecastWeather(lat, lon) {
+  var forecastURL = "https://api.openweathermap.org/data/2.5/forecast?lat="
+    + lat + "&lon=" + lon + "&appid=" + apiKEY + "&units=imperial";
+  fetch(forecastURL)
+    .then(response => response.json())
+    .then(dataF => {
+      console.log("dataF from forecast api:", dataF);
+      
+      for (i = 6; i <= dataF.list.length; i += 7) {
+        var forecastDay = `
+                <card class="border p-3 shadow border-dark-subtle">
+          <p class="card-text">` + dayjs(dataF.list[i].dt * 1000).format("MM/DD/YYYY") + `</p>
+            <div class="card-body">
+              <img src="https://openweathermap.org/img/wn/` + dataF.list[i].weather[0].icon + `.png" class="imgIcon" id="icon-img">
+            <div class="card-body">
+                <p class="card-text">`+ dataF.list[i].main.temp.toFixed(0) +`° F</p>
+                <p class="card-text">`+ dataF.list[i].main.humidity+`% humidity</p>
+                <p class="card-text">`+ dataF.list[i].wind.speed.toFixed(0)+` mph winds</p>
+              </div>
+            </div>
+          </card>
+  `
 
+                    // append the day to the five-day forecast
+                    $("#fiveDayForecast").append(forecastDay);
+               }
+            })
+        };
 
 // display weather function
-
 function displayWeather(data) {
   var cityName = document.getElementById("city-name")
   cityName.innerHTML = data.name;
   
+  var currentDate = document.getElementById("current-date")
+  currentDate.innerHTML = dayjs().format("MM/DD/YYYY")
+
   var currentIcon = document.getElementById("current-icon")
   currentIcon.src = "https://openweathermap.org/img/wn/" + data.weather[0].icon + ".png";
-  // currentIcon.classList.remove("hide")
+  
+  var currentDescription = document.getElementById("current-description")
+  currentDescription.innerHTML = data.weather[0].description;
   
   var currentTemp = document.getElementById("current-temp")
-  currentTemp.innerHTML = data.main.temp + " degrees"
+  currentTemp.innerHTML = data.main.temp.toFixed(0) + "° F" 
   
   var currentHumidity = document.getElementById("current-humidity")
-  currentHumidity.innerHTML = data.main.humidity + " % humidity";
+  currentHumidity.innerHTML = data.main.humidity + "% humidity";
   
   var currentWind = document.getElementById("current-wind-speed")
-  currentWind.innerHTML = data.wind.speed + " km/h winds";
+  currentWind.innerHTML = data.wind.speed.toFixed(0) + " mph winds";
   
-  // ddocument.querySelector(".city-name").innerText = name;
-  // for (var i = -1; i <= data.list.length; i += 8) {
-  //   console.log(i);
-  //   let index;
-  //   if (i === -1) {
-  //     index = i + 1
-  //   } else {
-  //     index = i
-  //   }
-  //   let temperature = Math.round(data.list[index].main.temp);
-  //   let humidity = data.list[index].main.humidity;
-  //   let windSpeed = data.list[index].wind.speed;
-
-  };
+};
 
 
-// <!-- current weather -- >
-//   <card class="text-end w-75 p-3 m-3 bg-light shadow-lg border border-dark-subtle rounded">
-//     <h3 class="cityName mb-2 p-2 mt-2 bolder" id="city-name">city name</h3>
 
-//     <div class="container-fluid" id="current-weather">
-//       <img src="https://openweathermap.org/img/wn/04n.png" alt="" class="currentIcon" id="currentIcon" />
-//       <p class="dateClass" id="current-date">date</p>
-//       <p class="tempClass" id="current-temp">temperature</p>
-//       <p class="humidityClass" id="current-humidity">humidity</p>
-//       <p class="windClass" id="current-wind-speed">wind speed</p>
-//       <p class="uvClass" id="current-uv-index">u/v index</p>
-//     </div>
-//   </card>
+// get every 8th value (24hours) in the returned array from the api call
 
 
 
 
+// ddocument.querySelector(".city-name").innerText = name;
+// for (var i = -1; i <= data.list.length; i += 8) {
+//   console.log(i);
+//   let index;
+//   if (i === -1) {
+//     index = i + 1
+//   } else {
+//     index = i
+//   }
+//   let temperature = Math.round(data.list[index].main.temp);
+//   let humidity = data.list[index].main.humidity;
+//   let windSpeed = data.list[index].wind.speed;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// currentIcon.classList.remove("hide")
 
 ////////////////////////////////////////////
       
@@ -155,10 +159,10 @@ function displayWeather(data) {
 
 // getWeather()
 // function displayWeather() {
-//    let { name } = data;
-//    let { icon, description } = data.weather[0];
-//    let { temp, humidty } = data.main;
-//    let { speed } = data.wind;
+//    let ${ name } = data;
+//    let ${ icon, description } = data.weather[0];
+//    let ${ temp, humidty } = data.main;
+//    let ${ speed } = data.wind;
 //    document.querySelector("city-name").innerText = name;
 //    document.querySelector("current-icon").src = "https://openweathermap.org/img/wn/" + icon + ".png";
 //    document.querySelector("temp").innerHTML = temp;
