@@ -4,37 +4,44 @@
 ## Overview
 
 
-* The weather dashboard will dynamically update HTML and CSS upon searching for city. 
+* The weather dashboard will dynamically update HTML and CSS upon searching for city.
 
-* Using a [Five Day Forecast API](https:/openweathermap.org/forecast5) to retrieve weather data from [OpenWeatherMap](https://openweathermap.org/) 
+* Using APIs from [OpenWeatherMap](https://openweathermap.org/) 
 
-* Uses `localStorage` and `JSON` methods to store and retrieve data.
+* fetch weather data for current & 5 Day forecast 
 
+* `localStorage` and `JSON` to store and retrieve data from APIs
+
+* [Day.js](https://day.js.org/) to handle dates and times
 
 
 ## Specific Goals
 
+* Searched city will wil get coordinates (lat, lon), then current weather & forecast.
+
+
+* OpenWeatherMap APIs used:
+```
+api.openweathermap.org/data/2.5/weather?q={city}&appid={APIkey}
+
+api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={APIkey}
+
+api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={APIkey}
 ```
 
-Searched city will present current & future weather conditions aswell as save search history
-
-OpenWeatherMap API to get following weather data:
+* Retrieved data for weather conditions
+  - Coordinates (lat, lon) of city
+  - Description & Icon
+  - Temperature
+  - Humidity
+  - Wind speed
   
-  city name 
-  date 
-  icon representation of weather conditions 
-  temperature
-  humidity
-  wind speed
 
-Selecting city from history will present current and future weather conditions 
-
-```
 
 
 ## Example Preview
 
-![WIP](./Assets/images/7pIxbgV.png)
+![Preview](./assets/images/Xo4yquY.png)
 
 
 
