@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="./Assets/css/style.css">
 </head>
 
-<body>B
+<body>
   <!-- header -->
   <header class="d-flex p-4 justify-content-center bg-dark shadow-lg text-white">
     <h1 class="h1 text-bold fw-bold text-center">Weather Forecast API</h1>
@@ -28,13 +28,14 @@
         <h5 class="d-flex justify-content-center text-align-center fw-bold mt-1 p-2 mb-1">Search by city name</h5>
         <input type="text" class="searchCityInput form-control w-100 text-center" id="search-city-input"
           placeholder="enter city name...">
-        <button type="submit" class="btn shadow-lg w-100 mt-2 p-2 mb-2 btn-dark text-white text-lowercase"
+        <button type="submit"
+          class="searchBtnClass btn shadow-lg w-100 mt-2 p-2 mb-2 btn-dark text-white text-lowercase"
           id="search-btn">search
         </button>
-        <div class="searchHistoryClass">
+        <div class="searchHistoryClass" id="searchHistContainer">
           <h6 class="d-flex justify-content-center aibn text-align-center fw-bold mt-1 p-2 mb-1">Search History</h6>
-          <button type="submit" class="btn shadow-lg text w-100 t-2 p-2 mb-2 btn-outline-dark text-lowercase"
-            id="searched-city-btn">City
+          <button type="submit" class="city btn shadow-lg text w-100 t-2 p-2 mb-2 btn-outline-dark text-lowercase"
+            id="searched-city-btn">
           </button>
         </div>
       </form>
@@ -64,8 +65,13 @@
     </section>
   </div>
 
-  <!-- jquery, day.js, local, -->
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+  <!-- jquery, day.js, local, -->\
+  https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+  <!-- <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script> -->
   <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
   <script src="./Assets/js/script.js"></script>
 </body>
